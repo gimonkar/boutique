@@ -1,5 +1,5 @@
 
-const BASE_URL = "http://localhost:8080/api/customers";
+const BASE_URL = "https://laxmi-boutique-back-end.onrender.com";
 
 const handleResponse = async (response) => {
   if (!response.ok) {
