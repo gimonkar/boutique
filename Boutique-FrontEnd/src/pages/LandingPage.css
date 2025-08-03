@@ -1,0 +1,74 @@
+.landing-container {
+  background-image: url("../assets/laxp.jpg");
+  background-size:contain;
+  background-position: center;
+  height:100vh;
+  position: relative;
+  font-family: 'Georgia', serif;
+}
+
+.landing-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.landing-title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px #000;
+  margin-bottom: 1rem;
+  font-family: 'Cinzel Decorative', cursive;
+}
+
+.landing-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.landing-btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: #f4c430;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.landing-btn:hover {
+  background: #000;
+  color: #f4c430;
+  transform: scale(1.05);
+}
+
+
+.login-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-form input, .login-form select {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
