@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/products")
 //@CrossOrigin(origins = "http://localhost:3000")
-@CrossOrigin("https://laxmi-boutique-back-end.onrender.com")
+@CrossOrigin
 public class ProductController {
 
     @Autowired
