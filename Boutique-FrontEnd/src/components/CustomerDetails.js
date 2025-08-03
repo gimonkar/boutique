@@ -6,7 +6,7 @@ function CustomerDetails() {
   const [customer, setCustomer] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/customers/${id}`)
+    fetch(`https://laxmi-boutique-back-end.onrender.com/api/customers/${id}`)
       .then((res) => res.json())
       .then((data) => setCustomer(data))
       .catch(() => alert("⚠️ Error fetching customer details."));

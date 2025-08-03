@@ -22,7 +22,7 @@ function ProductForm() {
   // Fetch product if in edit mode
   useEffect(() => {
     if (isEdit) {
-      fetch(`http://localhost:8080/api/products/${id}`)
+      fetch(`https://laxmi-boutique-back-end.onrender.com/api/products/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setProduct({
@@ -64,8 +64,8 @@ function ProductForm() {
     }
 
     const url = isEdit
-      ? `http://localhost:8080/api/products/${id}`
-      : `http://localhost:8080/api/products`;
+      ? `https://laxmi-boutique-back-end.onrender.com/api/products/${id}`
+      : `https://laxmi-boutique-back-end.onrender.com/api/products`;
 
     const method = isEdit ? 'PUT' : 'POST';
 

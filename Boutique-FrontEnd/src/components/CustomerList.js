@@ -5,14 +5,14 @@ function CustomerList() {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/customers")
+    fetch("https://laxmi-boutique-back-end.onrender.com/api/customers")
       .then(res => res.json())
       .then(data => setCustomers(data));
   }, []);
 
   const deleteCustomer = (id) => {
     if (window.confirm("Are you sure you want to delete this customer?")) {
-      fetch(`http://localhost:8080/api/customers/${id}`, {
+      fetch(`https://laxmi-boutique-back-end.onrender.com/api/customers/${id}`, {
         method: "DELETE",
       })
         .then(() => setCustomers(customers.filter(c => c.id !== id)))

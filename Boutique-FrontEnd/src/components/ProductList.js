@@ -17,7 +17,7 @@ function ProductList() {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/products")
+    fetch("https://laxmi-boutique-back-end.onrender.com/api/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -64,7 +64,7 @@ function ProductList() {
   }, [search, category, minPrice, maxPrice, inStockOnly, onSaleOnly, products]);
 
   const deleteProduct = (id) => {
-    fetch(`http://localhost:8080/api/products/${id}`, { method: "DELETE" })
+    fetch(`https://laxmi-boutique-back-end.onrender.com/api/products/${id}`, { method: "DELETE" })
       .then(() => setProducts(products.filter((p) => p.id !== id)));
   };
 

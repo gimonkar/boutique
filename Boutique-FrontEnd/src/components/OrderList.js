@@ -6,7 +6,7 @@ const OrderList = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/orders")
+    axios.get("https://laxmi-boutique-back-end.onrender.com/api/orders")
       .then(response => {
         console.log("API response:", response.data);
         const data = response.data;

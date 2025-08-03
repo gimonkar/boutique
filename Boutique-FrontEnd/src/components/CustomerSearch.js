@@ -5,7 +5,7 @@ function CustomerSearch() {
   const [results, setResults] = useState([]);
 
   const search = () => {
-    fetch(`http://localhost:8080/api/customers/search?q=${query}`)
+    fetch(`https://laxmi-boutique-back-end.onrender.com/api/customers/search?q=${query}`)
       .then(res => res.json())
       .then(data => setResults(data));
   };

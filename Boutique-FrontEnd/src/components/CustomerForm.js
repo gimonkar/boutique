@@ -15,7 +15,7 @@ function CustomerForm() {
 
   useEffect(() => {
     if (isEdit) {
-      fetch(`http://localhost:8080/api/customers/${id}`)
+      fetch(`https://laxmi-boutique-back-end.onrender.com/api/customers/${id}`)
         .then(res => res.json())
         .then(data => setCustomer(data))
         .catch(err => console.error('Error loading customer:', err));
@@ -31,8 +31,8 @@ function CustomerForm() {
 
   const method = isEdit ? 'PUT' : 'POST';
   const url = isEdit
-    ? `http://localhost:8080/api/customers/${id}`
-    : `http://localhost:8080/api/customers`;
+    ? `https://laxmi-boutique-back-end.onrender.com/api/customers/${id}`
+    : `https://laxmi-boutique-back-end.onrender.com/api/customers`;
 
   // Only include necessary fields
   const sanitizedCustomer = {
