@@ -1,8 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import { getAllOrders, deleteOrder } from "../api/orderApi";
 import OrderForm from "../components/OrderForm";
 import OrderList from "../components/OrderList";
+import "./OrdersPage.css";
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
@@ -34,12 +34,12 @@ const OrdersPage = () => {
     fetchOrders();
   }, []);
 
-  if (loading) return <p>Loading orders...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="loading-text">Loading orders...</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Order Management</h2>
+    <div className="orders-page">
+      <h2 className="orders-title">Order Management</h2>
       <OrderForm onSuccess={fetchOrders} />
       <OrderList orders={orders} onDelete={handleDelete} />
     </div>

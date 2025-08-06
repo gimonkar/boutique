@@ -1,12 +1,13 @@
 import { useState, useContext, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AdminContext } from './AdminContext';
+import './ProductForm.css';
 
 function ProductForm() {
   const { isAdmin } = useContext(AdminContext);
-  const { id } = useParams(); // for edit mode
+  const { id } = useParams();
   const navigate = useNavigate();
-  const isEdit = Boolean(id); // true if editing
+  const isEdit = Boolean(id);
 
   const [product, setProduct] = useState({
     name: '',
@@ -19,7 +20,6 @@ function ProductForm() {
     sale: false,
   });
 
-  // Fetch product if in edit mode
   useEffect(() => {
     if (isEdit) {
       fetch(`https://laxmi-boutique-back-end.onrender.com/api/products/${id}`)
@@ -52,7 +52,6 @@ function ProductForm() {
     e.preventDefault();
     if (!isAdmin) return alert("Only admin can modify products!");
 
-    // Basic validation
     if (product.name.trim().length < 2) {
       return alert("Product name must be at least 2 characters long.");
     }
@@ -81,16 +80,16 @@ function ProductForm() {
 
     if (response.ok) {
       alert(isEdit ? 'Product updated successfully' : 'Product added successfully');
-      navigate('/products'); // Redirect after success
+      navigate('/products');
     } else {
       alert('Error saving product');
     }
   };
 
-  if (!isAdmin) return <p style={{ color: "red" }}>You must be an admin to access this form.</p>;
+  if (!isAdmin) return <p style={{ color: "red", textAlign: "center" }}>You must be an admin to access this form.</p>;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="product-form">
       <h3>{isEdit ? 'Edit Product' : 'Add New Product'}</h3>
 
       <input
@@ -100,6 +99,7 @@ function ProductForm() {
         onChange={handleChange}
         required
         minLength={2}
+        type="text"
       />
       <input
         name="description"
@@ -107,6 +107,7 @@ function ProductForm() {
         value={product.description}
         onChange={handleChange}
         maxLength={1000}
+        type="text"
       />
       <input
         name="price"
@@ -133,12 +134,14 @@ function ProductForm() {
         value={product.category}
         onChange={handleChange}
         required
+        type="text"
       />
       <input
         name="image"
         placeholder="Image URL"
         value={product.image}
         onChange={handleChange}
+        type="url"
       />
 
       <label>

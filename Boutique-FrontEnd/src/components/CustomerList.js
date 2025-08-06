@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './CustomerList.css';
 
 function CustomerList() {
   const [customers, setCustomers] = useState([]);
@@ -21,23 +22,23 @@ function CustomerList() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="fw-bold">Customer List</h2>
-        <Link to="/customers/new" className="btn btn-primary">
+    <div className="customer-container">
+      <div className="customer-header">
+        <h2>Customer List</h2>
+        <Link to="/customers/new" className="add-btn">
           <i className="bi bi-person-plus"></i> Add Customer
         </Link>
       </div>
 
       {customers.length > 0 ? (
-        <div className="table-responsive">
-          <table className="table table-bordered table-hover align-middle shadow-sm">
-            <thead className="table-dark">
+        <div className="customer-table">
+          <table>
+            <thead>
               <tr>
                 <th>Email</th>
                 <th>Full Name</th>
                 <th>Phone</th>
-                <th className="text-center">Actions</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -46,24 +47,24 @@ function CustomerList() {
                   <td>{c.email}</td>
                   <td>{c.firstName} {c.lastName}</td>
                   <td>{c.phone || "N/A"}</td>
-                  <td className="text-center">
+                  <td>
                     <Link
                       to={`/customers/view/${c.id}`}
-                      className="btn btn-info btn-sm me-2"
+                      className="btn btn-info"
                     >
-                      <i className="bi bi-eye"></i> View
+                      View
                     </Link>
                     <Link
                       to={`/customers/edit/${c.id}`}
-                      className="btn btn-warning btn-sm me-2"
+                      className="btn btn-warning"
                     >
-                      <i className="bi bi-pencil-square"></i> Edit
+                      Edit
                     </Link>
                     <button
                       onClick={() => deleteCustomer(c.id)}
-                      className="btn btn-danger btn-sm"
+                      className="btn btn-danger"
                     >
-                      <i className="bi bi-trash3"></i> Delete
+                      Delete
                     </button>
                   </td>
                 </tr>
@@ -72,7 +73,7 @@ function CustomerList() {
           </table>
         </div>
       ) : (
-        <div className="alert alert-info">No customers found.</div>
+        <div className="alert alert-info mt-3">No customers found.</div>
       )}
     </div>
   );

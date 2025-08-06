@@ -1,0 +1,100 @@
+/* src/components/CheckoutPage.css */
+
+/* 📱 Mobile-first styles */
+.checkout-container {
+  padding: 2rem 1rem;
+  background: linear-gradient(to right, #f9fafb, #f3f4f6);
+  min-height: 100vh;
+}
+
+.checkout-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.checkout-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.checkout-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.checkout-form select,
+.checkout-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  resize: none;
+}
+
+.checkout-total-submit {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.checkout-total {
+  font-weight: 700;
+  color: #15803d;
+  font-size: 1.2rem;
+}
+
+.checkout-submit-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.checkout-submit-btn:hover {
+  background-color: #15803d;
+}
+
+/* 📲 Tablets (≥600px) */
+@media (min-width: 600px) {
+  .checkout-total-submit {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .checkout-title {
+    font-size: 1.75rem;
+  }
+}
+
+/* 💻 Desktops (≥1024px) */
+@media (min-width: 1024px) {
+  .checkout-container {
+    padding: 4rem 6rem;
+  }
+
+  .checkout-card {
+    max-width: 700px;
+    padding: 3rem;
+  }
+
+  .checkout-submit-btn {
+    font-size: 1.1rem;
+  }
+}

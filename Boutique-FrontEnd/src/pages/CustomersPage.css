@@ -1,0 +1,32 @@
+.customers-container {
+  padding: 1rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #0d6efd;
+}
+
+.status-msg {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.status-msg.error {
+  color: red;
+}
+
+/* Mobile-first, so no media queries required for mobile */
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
+}

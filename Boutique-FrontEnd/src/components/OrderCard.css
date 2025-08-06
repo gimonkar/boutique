@@ -1,0 +1,49 @@
+/* src/components/OrderCard.css */
+
+.order-card {
+  border-radius: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.order-card .card-body {
+  padding: 1.25rem;
+}
+
+.order-card .card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1d4ed8;
+}
+
+.order-card .badge {
+  padding: 0.5em 0.75em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.order-card p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .order-card .card-body {
+    padding: 1.5rem;
+  }
+
+  .order-card .card-title {
+    font-size: 1.4rem;
+  }
+
+  .order-card p {
+    font-size: 1rem;
+  }
+}

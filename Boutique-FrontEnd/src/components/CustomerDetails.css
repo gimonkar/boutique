@@ -1,0 +1,98 @@
+/* src/components/CustomerDetails.css */
+
+/* 🌐 Container & Card */
+.customer-details-container {
+  padding: 2rem 1rem;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.customer-details-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 🧾 Title */
+.customer-details-title {
+  text-align: center;
+  color: #2563eb;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* 👤 Personal Info */
+.customer-info p {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.customer-info strong {
+  color: #374151;
+}
+
+/* 📜 Order History */
+.customer-orders-title {
+  font-size: 1.25rem;
+  color: #15803d;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* 📋 Table */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.order-table th,
+.order-table td {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.order-table th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+.no-orders {
+  margin-top: 1rem;
+  color: #6b7280;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* 📱 Tablet and up */
+@media (min-width: 768px) {
+  .customer-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .customer-info p {
+    font-size: 1.05rem;
+  }
+
+  .customer-details-title {
+    font-size: 1.75rem;
+  }
+}
+
+/* 💻 Desktop and up */
+@media (min-width: 1024px) {
+  .customer-details-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem;
+  }
+
+  .order-table {
+    font-size: 1rem;
+  }
+}

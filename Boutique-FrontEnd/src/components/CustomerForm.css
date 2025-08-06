@@ -1,0 +1,73 @@
+/* src/components/CustomerForm.css */
+
+.customer-form-container {
+  padding: 1.5rem 1rem;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.customer-form-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.customer-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.customer-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.customer-form input {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  width: 100%;
+}
+
+.customer-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+}
+
+.customer-form-btn {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.customer-form-btn:hover {
+  background-color: #1e40af;
+}
+
+/* 📱 Mobile-first layout: stacked */
+
+@media (min-width: 768px) {
+  .form-row {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    flex: 1;
+  }
+}

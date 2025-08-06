@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './CustomerSearch.css';
 
 function CustomerSearch() {
   const [query, setQuery] = useState('');
@@ -11,19 +12,19 @@ function CustomerSearch() {
   };
 
   return (
-    <div className="container mt-3">
-      <h4>Search Customers</h4>
+    <div className="search-container">
+      <h4 className="search-title">Search Customers</h4>
       <input
-        className="form-control mb-2"
+        className="search-input"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name, email..."
       />
-      <button onClick={search} className="btn btn-info mb-3">Search</button>
+      <button onClick={search} className="search-button">Search</button>
 
-      <ul className="list-group">
+      <ul className="search-results">
         {results.map(c => (
-          <li key={c.id} className="list-group-item">
+          <li key={c.id}>
             {c.firstName} {c.lastName} - {c.email}
           </li>
         ))}

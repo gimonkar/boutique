@@ -1,0 +1,130 @@
+/* src/components/CartPage.css */
+
+.cart-container {
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background: linear-gradient(to right, #f9fafb, #f3f4f6);
+}
+
+.cart-card {
+  border-radius: 16px;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.cart-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.cart-table th,
+.cart-table td {
+  vertical-align: middle;
+}
+
+.cart-table input[type="number"] {
+  width: 80px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.cart-total-row td {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.cart-buttons .btn {
+  border-radius: 8px;
+  min-width: 150px;
+}
+
+.empty-cart-alert {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  background-color: #e0f2fe;
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+}
+
+/* Mobile-first styles are already defined above */
+
+/* 📱 Small Tablets (≥ 600px) */
+@media (min-width: 600px) {
+  .cart-card {
+    padding: 2rem;
+  }
+
+  .cart-header {
+    font-size: 1.5rem;
+  }
+
+  .cart-table input[type="number"] {
+    width: 100px;
+    font-size: 1rem;
+  }
+
+  .empty-cart-alert {
+    font-size: 1.2rem;
+    padding: 2.5rem;
+  }
+}
+
+/* 💻 Tablets and Medium Screens (≥ 768px) */
+@media (min-width: 768px) {
+  .cart-container {
+    padding: 3rem 2rem;
+  }
+
+  .cart-card {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .cart-header {
+    font-size: 1.75rem;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    font-size: 1.05rem;
+    padding: 1rem;
+  }
+
+  .cart-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+/* 🖥️ Desktops and Large Screens (≥ 1024px) */
+@media (min-width: 1024px) {
+  .cart-container {
+    padding: 4rem 5rem;
+  }
+
+  .cart-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2.5rem;
+  }
+
+  .cart-header {
+    font-size: 2rem;
+  }
+
+  .cart-buttons .btn {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+  }
+}

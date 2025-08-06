@@ -1,0 +1,44 @@
+.products-page {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1rem;
+  color: #555;
+}
+
+/* Media queries for responsive design */
+
+@media (max-width: 768px) {
+  .products-page {
+    padding: 0.8rem;
+  }
+
+  .products-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-title {
+    font-size: 1.2rem;
+  }
+
+  .loading-text,
+  .error-text {
+    font-size: 1rem;
+  }
+}

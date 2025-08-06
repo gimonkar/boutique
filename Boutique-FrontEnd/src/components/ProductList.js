@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AdminContext } from "./AdminContext";
 import { Link } from "react-router-dom";
 import { useCart } from "./CartContext";
-import "./ProductList.css";
+import "./ProductList.css"; // External stylesheet
 
 function ProductList() {
   const { isAdmin } = useContext(AdminContext);
@@ -25,42 +25,17 @@ function ProductList() {
       });
   }, []);
 
-  const handleFilter = () => {
+  useEffect(() => {
     let result = [...products];
 
-    if (search) {
-      result = result.filter((p) =>
-        p.name.toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
-    if (category) {
-      result = result.filter(
-        (p) => p.category.toLowerCase() === category.toLowerCase()
-      );
-    }
-
-    if (minPrice !== "") {
-      result = result.filter((p) => p.price >= parseFloat(minPrice));
-    }
-
-    if (maxPrice !== "") {
-      result = result.filter((p) => p.price <= parseFloat(maxPrice));
-    }
-
-    if (inStockOnly) {
-      result = result.filter((p) => p.inStock);
-    }
-
-    if (onSaleOnly) {
-      result = result.filter((p) => p.sale);
-    }
+    if (search) result = result.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
+    if (category) result = result.filter((p) => p.category.toLowerCase() === category.toLowerCase());
+    if (minPrice !== "") result = result.filter((p) => p.price >= parseFloat(minPrice));
+    if (maxPrice !== "") result = result.filter((p) => p.price <= parseFloat(maxPrice));
+    if (inStockOnly) result = result.filter((p) => p.inStock);
+    if (onSaleOnly) result = result.filter((p) => p.sale);
 
     setFiltered(result);
-  };
-
-  useEffect(() => {
-    handleFilter();
   }, [search, category, minPrice, maxPrice, inStockOnly, onSaleOnly, products]);
 
   const deleteProduct = (id) => {
@@ -69,176 +44,46 @@ function ProductList() {
   };
 
   return (
-    <div className="container py-4">
-      <h2 className="text-center text-primary mb-4">🛍️ Product Catalog</h2>
+    <div className="product-container">
+      <h2 className="product-heading">🛍️ Product Catalog</h2>
 
       {/* Filters */}
-      <div className="row g-2 mb-4">
-        <div className="col-md">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Search by name..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
-        <div className="col-md">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
-        </div>
-        <div className="col-md">
-          <input
-            className="form-control"
-            type="number"
-            placeholder="Min Price"
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
-          />
-        </div>
-        <div className="col-md">
-          <input
-            className="form-control"
-            type="number"
-            placeholder="Max Price"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
-          />
-        </div>
-        <div className="col-md-auto d-flex align-items-center">
-          <input
-            className="form-check-input me-1"
-            type="checkbox"
-            checked={inStockOnly}
-            onChange={() => setInStockOnly(!inStockOnly)}
-          />
-          <label className="form-check-label me-3">In Stock</label>
-          <input
-            className="form-check-input me-1"
-            type="checkbox"
-            checked={onSaleOnly}
-            onChange={() => setOnSaleOnly(!onSaleOnly)}
-          />
-          <label className="form-check-label">On Sale</label>
-        </div>
+      <div className="product-filters">
+        <input type="text" placeholder="Search by name..." value={search} onChange={(e) => setSearch(e.target.value)} />
+        <input type="text" placeholder="Category" value={category} onChange={(e) => setCategory(e.target.value)} />
+        <input type="number" placeholder="Min Price" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
+        <input type="number" placeholder="Max Price" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
+        <label><input type="checkbox" checked={inStockOnly} onChange={() => setInStockOnly(!inStockOnly)} /> In Stock</label>
+        <label><input type="checkbox" checked={onSaleOnly} onChange={() => setOnSaleOnly(!onSaleOnly)} /> On Sale</label>
       </div>
 
-      {/* Product Cards */}
-<div
-  style={{
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "flex-start", // ← align items to left
-    gap: "20px",
-    padding: "20px",
-  }}
->
-  {filtered.map((p) => (
-    <div
-      key={p.id}
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-        width: "240px",
-        padding: "15px",
-        backgroundColor: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <img
-        src={p.image}
-        alt={p.name}
-        style={{
-          width: "100%",
-          height: "250px",
-          objectFit:"fill",
-          borderRadius: "8px",
-          marginBottom: "10px",
-        }}
-      />
-      <h4 style={{ fontSize: "18px", margin: "0 0 5px" }}>{p.name}</h4>
-      <p style={{ fontWeight: "bold", color: "green", margin: "0 0 5px" }}>₹{p.price}</p>
-      <p style={{ fontSize: "14px", color: "#666", margin: "0 0 10px" }}>
-        {p.description.slice(0, 60)}...
-      </p>
-      <div style={{ fontSize: "13px", marginBottom: "10px" }}>
-        {p.inStock ? (
-          <span style={{ color: "green" }}>✔ In Stock</span>
-        ) : (
-          <span style={{ color: "gray" }}>✖ Out of Stock</span>
-        )}
-        <br />
-        {p.sale ? (
-          <span style={{ color: "red" }}>🔥 On Sale</span>
-        ) : (
-          <span>💼 Regular</span>
-        )}
+      {/* Products */}
+      <div className="product-grid">
+        {filtered.map((p) => (
+          <div className="product-card" key={p.id}>
+            <img src={p.image} alt={p.name} className="product-img" />
+            <h4>{p.name}</h4>
+            <p className="price">₹{p.price}</p>
+            <p className="desc">{p.description.slice(0, 60)}...</p>
+            <div className="tags">
+              <span className={p.inStock ? "tag green" : "tag gray"}>
+                {p.inStock ? "✔ In Stock" : "✖ Out of Stock"}
+              </span>
+              <span className={p.sale ? "tag red" : "tag"}>{p.sale ? "🔥 On Sale" : "💼 Regular"}</span>
+            </div>
 
+            <Link to={`/products/${p.id}`} className="btn btn-view">View</Link>
+
+            {isAdmin && (
+              <div className="admin-actions">
+                <Link to={`/products/edit/${p.id}`} className="btn btn-edit">Edit</Link>
+                <button onClick={() => deleteProduct(p.id)} className="btn btn-delete">Delete</button>
+                <button onClick={() => addToCart(p)} className="btn btn-cart">🛒 Add to Cart</button>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-                <Link
-          to={`/products/${p.id}`}
-              style={{
-            backgroundColor: "#dc3545",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            padding: "5px 10px",
-            fontSize: "12px",
-            cursor: "pointer",
-            textAlign:"center"
-          }}
-        >
-         View
-        </Link>
-
-      {isAdmin && <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", justifyContent: "center" }}>
-
-        <Link
-          to={`/products/edit/${p.id}`}
-          style={{ fontSize: "12px", textDecoration: "none", color: "#ffc107" }}
-        >
-          Edit
-        </Link>
-        <button
-          onClick={() => deleteProduct(p.id)}
-          style={{
-            backgroundColor: "#dc3545",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            padding: "5px 10px",
-            fontSize: "12px",
-            cursor: "pointer",
-          }}
-        >
-          Delete
-        </button>
-        <button
-          onClick={() => addToCart(p)}
-          style={{
-            backgroundColor: "#0d6efd",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            padding: "5px 10px",
-            fontSize: "12px",
-            cursor: "pointer",
-          }}
-        >
-          🛒 Add to Cart
-        </button>
-      </div>}
-    </div>
-  ))}
-</div>
     </div>
   );
 }

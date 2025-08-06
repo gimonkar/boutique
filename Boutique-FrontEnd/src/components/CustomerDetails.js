@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./CustomerDetails.css";
 
 function CustomerDetails() {
   const { id } = useParams();
@@ -15,15 +16,16 @@ function CustomerDetails() {
   if (!customer) return <p className="text-center mt-4">Loading customer data...</p>;
 
   return (
-    <div className="container mt-5">
-      <div className="card shadow p-4 rounded-4">
-        <h2 className="text-primary mb-4 text-center fw-bold">Customer Details</h2>
-        <div className="row">
-          <div className="col-md-6">
+    <div className="customer-details-container">
+      <div className="customer-details-card">
+        <h2 className="customer-details-title">Customer Details</h2>
+
+        <div className="customer-info">
+          <div>
             <p><strong>📧 Email:</strong> {customer.email}</p>
             <p><strong>👤 Name:</strong> {customer.firstName} {customer.lastName}</p>
           </div>
-          <div className="col-md-6">
+          <div>
             <p><strong>📞 Phone:</strong> {customer.phone || "N/A"}</p>
             <p><strong>🕒 Joined:</strong> {customer.createdAt?.replace("T", " ")}</p>
           </div>
@@ -31,11 +33,11 @@ function CustomerDetails() {
 
         <hr className="my-4" />
 
-        <h4 className="text-success fw-semibold">Order History</h4>
+        <h4 className="customer-orders-title">Order History</h4>
         {customer.orders?.length > 0 ? (
           <div className="table-responsive">
-            <table className="table table-striped table-bordered mt-3">
-              <thead className="table-light">
+            <table className="order-table">
+              <thead>
                 <tr>
                   <th>Order ID</th>
                   <th>Total</th>
@@ -56,7 +58,7 @@ function CustomerDetails() {
             </table>
           </div>
         ) : (
-          <p className="text-muted mt-2">No orders found for this customer.</p>
+          <p className="no-orders">No orders found for this customer.</p>
         )}
       </div>
     </div>

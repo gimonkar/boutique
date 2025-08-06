@@ -1,8 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import { getAllProducts, deleteProduct } from "../api/productApi";
 import ProductForm from "../components/ProductForm";
 import ProductList from "../components/ProductList";
+import "./ProductsPage.css";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -34,12 +34,12 @@ const ProductsPage = () => {
     fetchProducts();
   }, []);
 
-  if (loading) return <p>Loading products...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="loading-text">Loading products...</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Product Management</h2>
+    <div className="products-page">
+      <h2 className="products-title">Product Management</h2>
       <ProductForm onSuccess={fetchProducts} />
       <ProductList products={products} onDelete={handleDelete} />
     </div>

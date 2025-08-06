@@ -1,8 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import { getAllCustomers, deleteCustomer } from "../api/customerApi";
 import CustomerForm from "../components/CustomerForm";
 import CustomerList from "../components/CustomerList";
+import "./CustomersPage.css"; // ← External CSS
 
 const CustomersPage = () => {
   const [customers, setCustomers] = useState([]);
@@ -34,14 +34,19 @@ const CustomersPage = () => {
     fetchCustomers();
   }, []);
 
-  if (loading) return <p>Loading customers...</p>;
-  if (error) return <p>{error}</p>;
-
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Customer Management</h2>
-      <CustomerForm onSuccess={fetchCustomers} />
-      <CustomerList customers={customers} onDelete={handleDelete} />
+    <div className="customers-container">
+      {loading ? (
+        <p className="status-msg">Loading customers...</p>
+      ) : error ? (
+        <p className="status-msg error">{error}</p>
+      ) : (
+        <>
+          <h2 className="heading">👥 Customer Management</h2>
+          <CustomerForm onSuccess={fetchCustomers} />
+          <CustomerList customers={customers} onDelete={handleDelete} />
+        </>
+      )}
     </div>
   );
 };

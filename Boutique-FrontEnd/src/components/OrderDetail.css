@@ -1,0 +1,91 @@
+/* src/components/OrderDetail.css */
+
+.order-detail-card {
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.order-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.order-detail-header h3 {
+  color: #1d4ed8;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.order-badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.6em;
+}
+
+.order-detail p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.order-items {
+  margin-top: 1rem;
+}
+
+.order-items ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.order-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.order-items li div {
+  max-width: 70%;
+}
+
+.order-items li span {
+  font-weight: bold;
+}
+
+/* Delete button */
+.delete-button {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #dc3545;
+  background-color: #fff;
+  color: #dc3545;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .order-detail-header h3 {
+    font-size: 1.8rem;
+  }
+
+  .order-badge {
+    font-size: 1rem;
+  }
+
+  .order-items li div {
+    max-width: 80%;
+  }
+}

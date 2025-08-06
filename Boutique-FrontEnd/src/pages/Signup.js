@@ -1,6 +1,6 @@
-// src/pages/Signup.js
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Signup.css';
 
 function Signup() {
   const [form, setForm] = useState({ username: '', password: '', role: 'user' });
@@ -18,15 +18,15 @@ function Signup() {
   };
 
   return (
-    <div style={{ textAlign: 'center', padding: '2rem' }}>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSignup}>
+    <div className="signup-container">
+      <h2 className="signup-title">Sign Up</h2>
+      <form onSubmit={handleSignup} className="signup-form">
         <select name="role" value={form.role} onChange={handleChange}>
           <option value="user">User</option>
           <option value="admin">Admin</option>
-        </select><br /><br />
-        <input name="username" placeholder="Username" onChange={handleChange} /><br /><br />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} /><br /><br />
+        </select>
+        <input name="username" placeholder="Username" onChange={handleChange} />
+        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
         <button type="submit">Sign Up</button>
       </form>
     </div>

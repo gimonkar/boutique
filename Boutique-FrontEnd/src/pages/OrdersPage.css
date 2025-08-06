@@ -1,0 +1,42 @@
+.orders-page {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.orders-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .orders-page {
+    padding: 0.8rem;
+  }
+
+  .orders-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-title {
+    font-size: 1.2rem;
+  }
+
+  .loading-text,
+  .error-text {
+    font-size: 1rem;
+  }
+}
