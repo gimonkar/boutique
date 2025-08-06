@@ -239,8 +239,6 @@ function ProductList() {
     </div>
   ))}
 </div>
-
-
     </div>
   );
 }

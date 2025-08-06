@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/orders")
-@CrossOrigin
+@CrossOrigin(origins = "https://laxmi-boutique.onrender.com")
 public class OrderController {
 
     @Autowired
