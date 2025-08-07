@@ -70,7 +70,7 @@ function ProductList() {
   };
 
   return (
-    <div className="container py-4">
+    <div className="product-list container py-4">
       <h2 className="text-center text-primary mb-4">🛍️ Product Catalog</h2>
 
       {/* Filters */}
@@ -111,7 +111,7 @@ function ProductList() {
             onChange={(e) => setMaxPrice(e.target.value)}
           />
         </div>
-        <div className="col-md-auto d-flex align-items-center">
+        <div className="col-md-auto d-flex align-items-center filter-checks">
           <input
             className="form-check-input me-1"
             type="checkbox"
@@ -130,127 +130,41 @@ function ProductList() {
       </div>
 
       {/* Product Cards */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "flex-start",
-          gap: "20px",
-          padding: "20px",
-        }}
-      >
+      <div className="product-grid">
         {filtered.map((p) => (
-          <div
-            key={p.id}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-              width: "240px",
-              padding: "15px",
-              backgroundColor: "#fff",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <img
-              src={p.image}
-              alt={p.name}
-              style={{
-                width: "100%",
-                height: "250px",
-                objectFit: "fill",
-                borderRadius: "8px",
-                marginBottom: "10px",
-              }}
-            />
-            <h4 style={{ fontSize: "18px", margin: "0 0 5px" }}>{p.name}</h4>
-            <p
-              style={{ fontWeight: "bold", color: "green", margin: "0 0 5px" }}
-            >
-              ₹{p.price}
-            </p>
-            <p
-              style={{ fontSize: "14px", color: "#666", margin: "0 0 10px" }}
-            >
-              {p.description.slice(0, 60)}...
-            </p>
-            <div style={{ fontSize: "13px", marginBottom: "10px" }}>
-              {p.inStock ? (
-                <span style={{ color: "green" }}>✔ In Stock</span>
-              ) : (
-                <span style={{ color: "gray" }}>✖ Out of Stock</span>
-              )}
+          <div className="product-card" key={p.id}>
+            <img src={p.image} alt={p.name} className="product-image" />
+            <h4 className="product-name">{p.name}</h4>
+            <p className="product-price">₹{p.price}</p>
+            <p className="product-desc">{p.description.slice(0, 60)}...</p>
+            <div className="product-meta">
+              <span className={p.inStock ? "stock in" : "stock out"}>
+                {p.inStock ? "✔ In Stock" : "✖ Out of Stock"}
+              </span>
               <br />
-              {p.sale ? (
-                <span style={{ color: "red" }}>🔥 On Sale</span>
-              ) : (
-                <span>💼 Regular</span>
-              )}
+              <span className={p.sale ? "sale" : "regular"}>
+                {p.sale ? "🔥 On Sale" : "💼 Regular"}
+              </span>
             </div>
 
-            <Link
-              to={`/products/${p.id}`}
-              style={{
-                backgroundColor: "#dc3545",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                padding: "5px 10px",
-                fontSize: "12px",
-                textAlign: "center",
-                textDecoration: "none",
-              }}
-            >
+            <Link to={`/products/${p.id}`} className="btn view-btn">
               View
             </Link>
 
             {isAdmin && (
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "5px",
-                  justifyContent: "center",
-                  marginTop: "10px",
-                }}
-              >
-                <Link
-                  to={`/products/edit/${p.id}`}
-                  style={{
-                    fontSize: "12px",
-                    textDecoration: "none",
-                    color: "#ffc107",
-                  }}
-                >
+              <div className="admin-actions">
+                <Link to={`/products/edit/${p.id}`} className="btn edit-btn">
                   Edit
                 </Link>
                 <button
                   onClick={() => deleteProduct(p.id)}
-                  style={{
-                    backgroundColor: "#dc3545",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "5px 10px",
-                    fontSize: "12px",
-                    cursor: "pointer",
-                  }}
+                  className="btn delete-btn"
                 >
                   Delete
                 </button>
                 <button
                   onClick={() => addToCart(p)}
-                  style={{
-                    backgroundColor: "#0d6efd",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "5px 10px",
-                    fontSize: "12px",
-                    cursor: "pointer",
-                  }}
+                  className="btn cart-btn"
                 >
                   🛒 Add to Cart
                 </button>
